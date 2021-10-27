@@ -1,0 +1,80 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<nav class="navbar navbar-fixed-top navbar-dark bg-gradient-dark">
+  <div class="navbar-nav navbarcustom " id="navbar1">
+    <%= link_to (inline_svg_tag("logo.svg", options={class:'logo', nocomment: true, title: "Truffel!"})), root_path, class:'navbar-brand custombrand verticalalign'%>
+
+    <div class="align-self-end custom" style="margin-top:1em" data-toggle="buttons" id="navbar3" >
+      <div class="box-links">
+        <%= link_to 'About us',{ anchor: "box2", }, :class => "btn btn-default" %>
+        <%= link_to 'Contact us',{ anchor: "box5"}, :class => "btn btn-default" %>
+        <%= link_to 'Offer',{ anchor: "box3"}, :class => "btn btn-default" %>
+
+          <input type="radio" class="" name="options" id="brightness" checked="checked" >
+          <input type="radio" class="" name="options" id="brightness2">
+          <label for="brightness">
+            <%=(inline_svg_tag("sun.svg",class:'always_show'))%>
+          </label>
+          <label for="brightness2">
+            <%=(inline_svg_tag("moon.svg"))%>
+          </label>
+
+          <%# Does not work, fix svg images in labels, fallback radio buttons for now %>
+      </div>
+
+
+
+
+
+    </div>
+
+  </div>
+</nav>
+
+<script>
+    $(document).ready(function () {
+        mycolor = localStorage.getItem("colour");
+        fontcolor = localStorage.getItem("text-colour");
+        boxcolor= localStorage.getItem("box");
+        buttoncolor= localStorage.getItem("button");
+        $("body").css("background", mycolor);
+        $("body").css("color", fontcolor);
+        $(".boxbg").css("background", boxcolor);
+        $(".buttonbg").css("background", buttoncolor);
+
+        $('#brightness').click(function () {
+            mycolor = '#bebebe';
+            fontcolor = '#000';
+            boxcolor = '#b0b0b0';
+            buttoncolor = '#e3e3e3';
+            $("body").css("background", mycolor);
+            $("body").css("color", fontcolor);
+            $(".boxbg").css("background", boxcolor);
+            $(".buttonbg").css("background", buttoncolor);
+            localStorage.setItem("colour", mycolor);
+            localStorage.setItem("text-colour", fontcolor);
+            localStorage.setItem("box",boxcolor);
+            localStorage.setItem("button", buttoncolor);
+        });
+
+        $('#brightness2').click(function () {
+            mycolor = "#272727";
+            fontcolor = '#CCC';
+            boxcolor = '#171717';
+            buttoncolor= '#616161';
+            $("body").css("background", mycolor);
+            $("body").css("color", fontcolor);
+            $(".boxbg").css("background", boxcolor);
+            $(".buttonbg").css("background", buttoncolor);
+            localStorage.setItem("colour", mycolor);
+            localStorage.setItem("text-colour", fontcolor);
+            localStorage.setItem("box",boxcolor);
+            localStorage.setItem("button", buttoncolor);
+
+        });
+    });
+
+
+
+
+
+</script>
